@@ -15,14 +15,19 @@ class TennisScoreBoard:
             elif self.p1_score != 0:
                 return "{} All".format(score[self.p1_score])
         else:
-            if (self.p1_score - self.p2_score == 1) and (self.p1_score + self.p2_score > 6):
-                return "Advantage P1"
-            if (self.p1_score - self.p2_score == 2) and (self.p1_score + self.p2_score > 7):
+            p1_advantage = cmp(self.p1_score, self.p2_score)
+            sum_of_score = self.p1_score + self.p2_score
+
+
+            if (self.p1_score - self.p2_score >= 2) and (sum_of_score == 8):
                 return "Game P1"
-            if (self.p2_score - self.p1_score == 1) and (self.p2_score + self.p1_score > 6):
-                return "Advantage P2"
-            if (self.p2_score - self.p1_score == 2) and (self.p2_score + self.p1_score > 7):
+            elif sum_of_score >7:
                 return "Game P2"
+
+            if ( p1_advantage==1 ) and (sum_of_score == 7):
+                return "Advantage P1"
+            elif sum_of_score >=7 :
+                return "Advantage P2"
         return "{} {}".format(score[self.p1_score], score[self.p2_score])
 
     def won_p1_score(self):
