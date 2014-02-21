@@ -6,7 +6,8 @@ class TennisScoreBoard:
     def get_score(self):
         scores = {0: 'Love', 1: 'Fifteen', 2: 'Thirty', 3: 'Forty'}
         deuce = (self.p1_score + self.p2_score) >= 6
-        if max(self.p1_score, self.p2_score) >= 4:
+        score_can_game = max(self.p1_score, self.p2_score) >= 4
+        if score_can_game:
             score_diff = self.p1_score - self.p2_score
             if score_diff == 2:
                 return "Game P1"
