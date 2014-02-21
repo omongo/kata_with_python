@@ -41,11 +41,20 @@ class TestTennis(unittest.TestCase):
         result = self.tennisScoreBoard.get_score()
         self.assertEquals(expected, result)
 
-    def testDeuce(self):
+    def testFirstDeuce(self):
         expected = "Deuce"
         for i in xrange(3):
             self.tennisScoreBoard.won_p1_score()
         for i in xrange(3):
+            self.tennisScoreBoard.won_p2_score()
+        result = self.tennisScoreBoard.get_score()
+        self.assertEquals(expected, result)
+
+    def testNextDeuce(self):
+        expected = "Deuce"
+        for i in xrange(4):
+            self.tennisScoreBoard.won_p1_score()
+        for i in xrange(4):
             self.tennisScoreBoard.won_p2_score()
         result = self.tennisScoreBoard.get_score()
         self.assertEquals(expected, result)
@@ -58,8 +67,17 @@ class TestTennis(unittest.TestCase):
             self.tennisScoreBoard.won_p2_score()
         result = self.tennisScoreBoard.get_score()
         self.assertEquals(expected, result)
-    
-    def testGame(self):
+
+    def testAdvantageP2(self):
+        expected = "Advantage P2"
+        for i in xrange(3):
+            self.tennisScoreBoard.won_p1_score()
+        for i in xrange(4):
+            self.tennisScoreBoard.won_p2_score()
+        result = self.tennisScoreBoard.get_score()
+        self.assertEquals(expected, result)
+
+    def testGameP1(self):
         expected = "Game P1"
         for i in xrange(5):
             self.tennisScoreBoard.won_p1_score()
