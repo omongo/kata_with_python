@@ -24,7 +24,7 @@ class TennisScoreBoard:
             if self.p1_score != self.p2_score or self.p1_score == 0:
                 return "{} - {}".format(scores[self.p1_score], scores[self.p2_score])
             else:
-                return "{} - All".format(scores.get(self.p1_score))
+                return "{} - All".format(scores[self.p1_score])
 
     def won_p1_score(self):
         self.p1_score += 1
