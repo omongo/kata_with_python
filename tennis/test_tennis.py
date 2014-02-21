@@ -1,31 +1,30 @@
 import unittest
 from tennis import TennisScoreBoard
 
-
 class TestTennis(unittest.TestCase):
     def setUp(self):
         self.tennisScoreBoard = TennisScoreBoard()
 
     def testLoveLove(self):
-        expected = "Love Love"
+        expected = "Love - Love"
         result = self.tennisScoreBoard.get_score()
         self.assertEquals(expected, result)
 
     def testFifteenLove(self):
-        expected = "Fifteen Love"
+        expected = "Fifteen - Love"
         self.tennisScoreBoard.won_p1_score()
         result = self.tennisScoreBoard.get_score()
         self.assertEquals(expected, result)
 
     def testFifteenAll(self):
-        expected = "Fifteen All"
+        expected = "Fifteen - All"
         self.tennisScoreBoard.won_p1_score()
         self.tennisScoreBoard.won_p2_score()
         result = self.tennisScoreBoard.get_score()
         self.assertEquals(expected, result)
 
     def testFifteenThirty(self):
-        expected = "Fifteen Thirty"
+        expected = "Fifteen - Thirty"
         self.tennisScoreBoard.won_p1_score()
         for i in xrange(2):
             self.tennisScoreBoard.won_p2_score()
@@ -33,7 +32,7 @@ class TestTennis(unittest.TestCase):
         self.assertEquals(expected, result)
 
     def testThirtyAll(self):
-        expected = "Thirty All"
+        expected = "Thirty - All"
         for i in xrange(2):
             self.tennisScoreBoard.won_p1_score()
         for i in xrange(2):
@@ -82,6 +81,15 @@ class TestTennis(unittest.TestCase):
         for i in xrange(5):
             self.tennisScoreBoard.won_p1_score()
         for i in xrange(3):
+            self.tennisScoreBoard.won_p2_score()
+        result = self.tennisScoreBoard.get_score()
+        self.assertEquals(expected, result)
+
+    def testGameP2(self):
+        expected = "Game P2"
+        for i in xrange(3):
+            self.tennisScoreBoard.won_p1_score()
+        for i in xrange(5):
             self.tennisScoreBoard.won_p2_score()
         result = self.tennisScoreBoard.get_score()
         self.assertEquals(expected, result)

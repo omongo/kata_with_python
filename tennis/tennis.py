@@ -4,31 +4,26 @@ class TennisScoreBoard:
         self.p2_score = 0
 
     def get_score(self):
-        score = {0: 'Love', 1: 'Fifteen', 2: 'Thirty', 3: 'Forty'}
-        deuce = self.p1_score == self.p2_score
-        if deuce:
-            next_deuce = self.p1_score + self.p2_score == 8
-            if next_deuce:
-                self.p1_score = self.p2_score = 3
-            if self.p1_score == 3:
-                return "Deuce"
-            elif self.p1_score != 0:
-                return "{} All".format(score[self.p1_score])
-        else:
-            p1_advantage = cmp(self.p1_score, self.p2_score)
-            sum_of_score = self.p1_score + self.p2_score
-
-
-            if (self.p1_score - self.p2_score >= 2) and (sum_of_score == 8):
+        scores = {0: 'Love', 1: 'Fifteen', 2: 'Thirty', 3: 'Forty'}
+        deuce = (self.p1_score + self.p2_score) >= 6
+        if max(self.p1_score, self.p2_score) >= 4:
+            score_diff = self.p1_score - self.p2_score
+            if score_diff == 2:
                 return "Game P1"
-            elif sum_of_score >7:
+            elif score_diff == -2:
                 return "Game P2"
-
-            if ( p1_advantage==1 ) and (sum_of_score == 7):
+        if deuce:
+            if self.p1_score > self.p2_score:
                 return "Advantage P1"
-            elif sum_of_score >=7 :
+            elif self.p1_score < self.p2_score:
                 return "Advantage P2"
-        return "{} {}".format(score[self.p1_score], score[self.p2_score])
+            else:
+                return "Deuce"
+        else:
+            if self.p1_score != self.p2_score or self.p1_score == 0:
+                return "{} - {}".format(scores[self.p1_score], scores[self.p2_score])
+            else:
+                return "{} - All".format(scores.get(self.p1_score))
 
     def won_p1_score(self):
         self.p1_score += 1
