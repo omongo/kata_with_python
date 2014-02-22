@@ -14,8 +14,8 @@ class TennisScoreBoard:
             return ('Game ' if abs(p1 - p2) == 2 else 'Advantage ') + player
         return points[p1] + ' - ' + (points[p2] if p1 != p2 or p1 == 0 else 'All')
 
-    def won_p1_score(self):
+    def won_p1(self):
         self.p1_score += 1
 
-    def won_p2_score(self):
+    def won_p2(self):
         self.p2_score += 1
