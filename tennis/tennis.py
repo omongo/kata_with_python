@@ -4,7 +4,7 @@ class TennisScoreBoard:
         self.p2_score = 0
 
     def get_score(self):
-        points = ['Love', 'Fifteen', 'Thirty', 'Forty']
+        points = ('Love', 'Fifteen', 'Thirty', 'Forty')
         p1 = self.p1_score
         p2 = self.p2_score
         if (p1 + p2) >= 6:
