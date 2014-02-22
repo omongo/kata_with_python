@@ -14,7 +14,6 @@ class TennisScoreBoard:
         return pts[p1] + ' - ' + (pts[p2] if p1 != p2 or p1 == 0 else 'All')
 
     def won_p1(self):
-        self.points = []
         self.p1_score += 1
 
     def won_p2(self):
