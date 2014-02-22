@@ -4,27 +4,15 @@ class TennisScoreBoard:
         self.p2_score = 0
 
     def get_score(self):
-        scores = {0: 'Love', 1: 'Fifteen', 2: 'Thirty', 3: 'Forty'}
-        score_can_game = max(self.p1_score, self.p2_score) >= 4
-        deuce = (self.p1_score + self.p2_score) >= 6
-        if score_can_game:
-            score_diff = self.p1_score - self.p2_score
-            if score_diff == 2:
-                return "Game P1"
-            elif score_diff == -2:
-                return "Game P2"
-        if deuce:
-            if self.p1_score > self.p2_score:
-                return "Advantage P1"
-            elif self.p1_score < self.p2_score:
-                return "Advantage P2"
-            else:
-                return "Deuce"
-        else:
-            if self.p1_score != self.p2_score or self.p1_score == 0:
-                return "{} - {}".format(scores[self.p1_score], scores[self.p2_score])
-            else:
-                return "{} - All".format(scores[self.p1_score])
+        points = ['Love', 'Fifteen', 'Thirty', 'Forty']
+        p1 = self.p1_score
+        p2 = self.p2_score
+        if (p1 + p2) >= 6:
+            if p1 == p2:
+                return 'Deuce'
+            player = 'P1' if p1 > p2 else 'P2'
+            return ('Game ' if abs(p1 - p2) == 2 else 'Advantage ') + player
+        return points[p1] + ' - ' + (points[p2] if p1 != p2 or p1 == 0 else 'All')
 
     def won_p1_score(self):
         self.p1_score += 1

@@ -44,7 +44,6 @@ class TestTennis(unittest.TestCase):
         expected = "Deuce"
         for i in xrange(3):
             self.tennisScoreBoard.won_p1_score()
-        for i in xrange(3):
             self.tennisScoreBoard.won_p2_score()
         result = self.tennisScoreBoard.get_score()
         self.assertEquals(expected, result)
@@ -53,7 +52,6 @@ class TestTennis(unittest.TestCase):
         expected = "Deuce"
         for i in xrange(4):
             self.tennisScoreBoard.won_p1_score()
-        for i in xrange(4):
             self.tennisScoreBoard.won_p2_score()
         result = self.tennisScoreBoard.get_score()
         self.assertEquals(expected, result)
